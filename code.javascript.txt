@@ -1,0 +1,17 @@
+       const express = require('express');
+       const app = express();
+       app.use(express.json());
+       
+       let tracks = []; // Simple in-memory storage (use a DB for persistence)
+       
+       app.post('/track', (req, res) => {
+           tracks.push(req.body);
+           res.send('Tracked!');
+       });
+       
+       app.get('/tracks', (req, res) => {
+           res.json(tracks);
+       });
+       
+       app.listen(3000, () => console.log('Server running'));
+       
